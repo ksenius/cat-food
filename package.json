@@ -1,0 +1,29 @@
+{
+  "name": "cat-food",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html -p 3033",
+    "build": "parcel build src/index.html --no-source-maps",
+    "prebuild": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "parcel-bundler": "^1.12.4",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.26.10"
+  },
+  "browserslist": [
+    ">= 1%",
+    "last 2 versions",
+    "IE 11",
+    "not dead"
+  ]
+}
