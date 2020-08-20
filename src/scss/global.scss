@@ -1,3 +1,14 @@
+@import './helpers/helpers';
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 100;
+  font-display: fallback;
+  src: url('../fonts/Exo20-Thin.woff2') format('woff2'),
+       url('../fonts/Exo20-Thin.woff') format('woff');
+}
+
 html {
   font-size: 10px;
 }
@@ -5,4 +16,8 @@ html {
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  color: $base-text;
+  background: #000 url('../images/bg-pattern.png');
 }
