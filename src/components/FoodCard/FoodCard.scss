@@ -1,0 +1,186 @@
+@import '../../scss/helpers/helpers';
+
+.food-card {
+  overflow: hidden;
+
+  &__content {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__top-decoration,
+  &__main {
+    background-color: $card-bg;
+    border-color: $blue;
+    border-style: solid;
+    transition: 0.5s;
+  }
+
+  &__top-decoration {
+    position: relative;
+    height: 4.4rem;
+    margin-left: 4.4rem;
+    border-width: 0.4rem 0.4rem 0 0;
+    border-top-right-radius: 1.2rem;
+    box-sizing: border-box;
+    z-index: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      $size: 4.6rem;
+      top: -0.6rem;
+      left: -4.6rem;
+      border-left: $size solid transparent;
+      border-bottom: $size solid $blue;
+      transition: 0.5s;
+    }
+
+    &::after {
+      $size: 4rem;
+      top: 0;
+      left: -4rem;
+      border-left: $size solid transparent;
+      border-bottom: $size solid $card-bg;
+    }
+  }
+
+  &__main {
+    color: $card-text;
+    border-width: 0 0.4rem 0.4rem 0.4rem;
+    border-radius: 0 0 1.2rem 1.2rem;
+    box-sizing: border-box;
+    background-image: url('../../images/cat.png');
+    background-repeat: no-repeat;
+    background-position: -2.7rem calc(100% + 9.2rem);
+    position: relative;
+    margin-bottom: 1.4rem;
+
+    @include aspect-ratio(444, 320);
+  }
+
+  &__description {
+    @include flexbox($direction: column);
+    margin: 0 4.4rem;
+    transform: translateY(-2.4rem);
+  }
+
+  &__title {
+    margin: 0.5rem 0 0 -0.2rem;
+    font-size: 4.8rem;
+    color: $card-heading;
+
+    span {
+      display: block;
+      font-size: 0.5em;
+      margin-left: 0.2rem;
+    }
+  }
+
+  &__info,
+  &__detail {
+    margin: 0;
+  }
+
+  &__info {
+    order: -1;
+  }
+
+  &__details {
+    font-size: 1.4rem;
+    @include flexbox($direction: column);
+  }
+
+  &__weight-label {
+    position: absolute;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: $blue;
+    color: $base-text;
+    font-size: 4.2rem;
+    line-height: 1;
+    text-align: center;
+    padding-top: 1.1rem;
+    box-sizing: border-box;
+    transition: 0.5s;
+
+    span {
+      display: block;
+      font-size: 0.5em;
+    }
+  }
+
+  &__message {
+    text-align: center;
+    font-size: 1.3rem;
+    min-height: 1.6rem;
+
+    a {
+      display: inline-block;
+      color: $blue;
+      text-decoration: none;
+      border-bottom: 0.1rem dashed $blue;
+      transition: 0.5s;
+
+      &:hover {
+        color: $base-text;
+      }
+    }
+  }
+
+  // Selected
+  &--selected &__top-decoration,
+  &--selected &__main {
+    border-color: $pink;
+  }
+
+  &--selected &__top-decoration::before {
+    border-bottom-color: $pink;
+  }
+
+  &--selected &__weight-label {
+    background: $pink;
+  }
+
+  // Disabled
+  &--disabled &__content {
+    cursor: not-allowed;
+  }
+
+  &--disabled &__top-decoration,
+  &--disabled &__main {
+    border-color: $disabled;
+  }
+
+  &--disabled &__top-decoration::before {
+    border-bottom-color: $disabled;
+  }
+
+  &--disabled &__main {
+    background-image: linear-gradient(rgba($card-bg, 0.5), rgba($card-bg, 0.5)),
+      url('../../images/cat.png');
+    background-repeat: no-repeat;
+    background-position: -2.7rem calc(100% + 9.2rem);
+  }
+
+  &--disabled &__main,
+  &--disabled &__title {
+    color: $disabled;
+  }
+
+  &--disabled &__weight-label {
+    background: $disabled;
+  }
+
+  &--disabled &__message {
+    color: $yellow;
+  }
+}
