@@ -1,9 +1,9 @@
 @import '../../scss/helpers/helpers';
 
 .food-section {
-  @include flexbox(center);
+  @include flexbox(center, center);
   min-height: 100vh;
-  padding: 3.2rem 0;
+  padding: 3.2rem 0 5rem;
   box-sizing: border-box;
   background-image: linear-gradient(
     to bottom,
@@ -12,10 +12,16 @@
     rgba(0, 0, 0, 0.5)
   );
 
+  // fix vertical centering in IE11
+  &::after {
+    content: '';
+    min-height: calc(100vh - 8.2rem);
+    font-size: 0;
+  }
+
   &__container {
     width: calc(100% - 4rem);
     max-width: 112rem;
-    margin: 0 auto;
   }
 
   &__heading {
@@ -32,14 +38,7 @@
   }
 
   &__items {
-    @include flexbox(center, $direction: column);
-
-    @include breakpoint-up(sm) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: center;
-    }
+    @include flexbox($justify: center, $wrap: wrap);
 
     @include breakpoint-up(xl) {
       justify-content: space-between;
@@ -47,11 +46,11 @@
   }
 
   &__item {
-    flex: 1;
+    flex-basis: 100%;
     min-width: 28rem;
     max-width: 32rem;
 
-    @include breakpoint-up(md) {
+    @include breakpoint-up(sm) {
       margin: 0 2.4rem;
     }
 
@@ -61,6 +60,10 @@
 
     &:not(:last-of-type) {
       margin-bottom: 4rem;
+
+      @include breakpoint-up(xl) {
+      margin-bottom: 3rem;
+    }
     }
   }
 }
