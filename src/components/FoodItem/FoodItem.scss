@@ -1,0 +1,28 @@
+@import '../../scss/helpers/helpers';
+
+.food-item {
+  &__message {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  &__link {
+    color: $blue;
+    text-decoration: none;
+    border-bottom: 0.1rem dashed $blue;
+    display: inline-block;
+    line-height: 1;
+    transition: 0.5s;
+
+    &:hover {
+      color: $pink;
+      border-bottom-style: solid;
+      border-bottom-color: $pink;
+    }
+  }
+
+  &--disabled &__message {
+    color: $yellow;
+  }
+}

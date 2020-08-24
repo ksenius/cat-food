@@ -1,5 +1,5 @@
 import React from 'react';
-import FoodCard from '../FoodCard/FoodCard';
+import FoodItem from '../FoodItem/FoodItem';
 import './FoodSection.scss';
 
 function FoodSection(props) {
@@ -9,9 +9,9 @@ function FoodSection(props) {
         <h1 className="food-section__heading">{props.heading}</h1>
         <div className="food-section__items">
           {props.items.map((item, index) => (
-            <FoodCard
+            <FoodItem
               key={index}
-              className="food-section__item"
+              classMix="food-section__item"
               {...item}
             />
           ))}
