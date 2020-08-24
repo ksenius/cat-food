@@ -1,7 +1,6 @@
-import './scss/global.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FoodSection from './components/FoodSection/FoodSection';
+import App from './App';
 
 const catFood = [
   {
@@ -31,6 +30,6 @@ const catFood = [
 ];
 
 ReactDOM.render(
-  <FoodSection heading="Ты сегодня покормил кота?" items={catFood} />,
+  <App foodItems={catFood} />,
   document.getElementById('root')
 );
