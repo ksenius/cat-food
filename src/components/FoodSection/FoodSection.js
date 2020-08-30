@@ -8,12 +8,8 @@ function FoodSection(props) {
       <div className="food-section__container">
         <h1 className="food-section__heading">{props.heading}</h1>
         <div className="food-section__items">
-          {props.items.map((item, index) => (
-            <FoodItem
-              key={index}
-              classMix="food-section__item"
-              {...item}
-            />
+          {props.items.map((item) => (
+            <FoodItem key={item.id} classMix="food-section__item" {...item} />
           ))}
         </div>
       </div>

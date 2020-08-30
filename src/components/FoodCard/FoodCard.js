@@ -42,6 +42,7 @@ class FoodCard extends React.Component {
     this.props.clickHandler(e);
 
     if (this.props.status === 'disabled') return;
+
     if (this.state.infoText !== this.initialInfoText) {
       this.setState({
         infoText: this.initialInfoText
@@ -51,6 +52,7 @@ class FoodCard extends React.Component {
 
   handleMouseEnter() {
     if (this.props.status !== 'selected') return;
+
     this.setState({
       infoText: 'Котэ не одобряет?'
     });

@@ -8,10 +8,10 @@ class FoodItem extends React.Component {
 
     let initialStatus = 'default';
 
-    if (this.props.selected) {
-      initialStatus = 'selected';
-    } else if (!this.props.available) {
+    if (!this.props.available) {
       initialStatus = 'disabled';
+    } else if (this.props.selected) {
+      initialStatus = 'selected';
     }
 
     this.state = {
@@ -21,26 +21,8 @@ class FoodItem extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    e.preventDefault();
-
-    const status = this.state.status;
-
-    if (status === 'disabled') return;
-
-    if (status === 'selected') {
-      this.setState({
-        status: 'default'
-      });
-    } else {
-      this.setState({
-        status: 'selected'
-      });
-    }
-  }
-
-  render() {
-    const status = this.state.status;
+  getMessage() {
+    const { status } = this.state;
 
     let message = (
       <span>
@@ -58,18 +40,46 @@ class FoodItem extends React.Component {
       message = `Печалька, ${this.props.taste} закончился.`;
     }
 
+    return message;
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+
+    const { status } = this.state;
+
+    if (status === 'disabled') return;
+
+    if (status === 'selected') {
+      this.setState({
+        status: 'default'
+      });
+    } else {
+      this.setState({
+        status: 'selected'
+      });
+    }
+  }
+
+  render() {
+    let className = 'food-item';
+
+    if (this.state.status !== 'default') {
+      className += ` ${className}--${this.state.status}`;
+    }
+
+    if (this.props.classMix) {
+      className += ` ${this.props.classMix}`;
+    }
+
     return (
-      <div className={
-          this.state.status !== 'default'
-            ? `food-item food-item--${this.state.status} ${this.props.classMix}`
-            : `food-item ${this.props.classMix}`
-      }>
+      <div className={className}>
         <FoodCard
           status={this.state.status}
           clickHandler={this.handleClick}
           {...this.props}
         />
-        <div className="food-item__message">{message}</div>
+        <div className="food-item__message">{this.getMessage()}</div>
       </div>
     );
   }

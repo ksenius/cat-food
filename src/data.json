@@ -1,0 +1,37 @@
+{
+  "foodSection": {
+    "heading": "Ты сегодня покормил кота?"
+  },
+  "foodItems": [
+    {
+      "id": 1,
+      "title": "Нямушка",
+      "taste": "с фуа-гра",
+      "description": "Сказочное заморское яство",
+      "madeOf": "Печень утки разварная с артишоками.",
+      "weight": 0.5,
+      "available": true,
+      "selected": false
+    },
+    {
+      "id": 2,
+      "title": "Нямушка",
+      "taste": "с рыбой",
+      "description": "Сказочное заморское яство",
+      "madeOf": "Головы щучьи с чесноком да свежайшая сёмгушка.",
+      "weight": 2,
+      "available": true,
+      "selected": true
+    },
+    {
+      "id": 3,
+      "title": "Нямушка",
+      "taste": "с курой",
+      "description": "Сказочное заморское яство",
+      "madeOf": "Филе из цыплят с трюфелями в бульоне.",
+      "weight": 5,
+      "available": false,
+      "selected": false
+    }
+  ]
+}
